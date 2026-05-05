@@ -163,17 +163,18 @@
 
   "codeloop_state": {
     "enabled": true,
-    "rounds_completed": 4,
-    "current_round": 4,
+    "rounds_completed": 5,
+    "current_round": 5,
     "exit_reason": "declare_stable",
     "scores": [
       {"round": 0, "score": "v1.0 baseline 8 gates 7 PASS + 1 DEFERRED"},
       {"round": 1, "score_delta": 0.55, "score": "v1.1 onboarding wizard 7-step + zero regression"},
       {"round": 2, "score_delta": 0.55, "score": "v1.2 P0 hidden visibility fix + 9 design polish (subagent-led)"},
       {"round": 3, "score_delta": 0.95, "score": "v1.2 open-sourced + landing live (gh repo + 3 hero imgs + vercel auto-deploy)"},
-      {"round": 4, "score_delta": 1.15, "score": "landing v2 manga/anime redesign (5 GPT-image-2 imgs + warm cream palette + sticker cards + paper texture)"}
+      {"round": 4, "score_delta": 1.15, "score": "landing v2 manga/anime redesign (5 GPT-image-2 imgs + warm cream palette + sticker cards + paper texture)"},
+      {"round": 5, "score_delta": 0.35, "score": "hero text-overlap-image hotfix (split grid layout, custom domain kid.simprr.com active)"}
     ],
-    "final_score": "+3.20 vs baseline (cumulative feature + bugfix + distribution + visual delta)",
+    "final_score": "+3.55 vs baseline (cumulative feature + bugfix + distribution + visual + hotfix delta)",
     "stability": "STABLE",
     "ledger_path": "ceo-rounds/ledger.tsv",
     "baseline_round_path": "ceo-rounds/round-000-baseline.md",
