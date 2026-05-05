@@ -6,7 +6,7 @@
   "output_dir": "/Users/lukeliu/Sparticle/GEI-Agent/output/kid-guard",
 
   "current_phase": "done",
-  "current_step": "delivered_v1.2",
+  "current_step": "delivered_v1.2_open_sourced",
   "phase_status": {
     "gei-discover": "completed",
     "gei-generate": "completed",
@@ -163,15 +163,16 @@
 
   "codeloop_state": {
     "enabled": true,
-    "rounds_completed": 2,
-    "current_round": 2,
+    "rounds_completed": 3,
+    "current_round": 3,
     "exit_reason": "declare_stable",
     "scores": [
       {"round": 0, "score": "v1.0 baseline 8 gates 7 PASS + 1 DEFERRED"},
       {"round": 1, "score_delta": 0.55, "score": "v1.1 onboarding wizard 7-step + zero regression"},
-      {"round": 2, "score_delta": 0.55, "score": "v1.2 P0 hidden visibility fix + 9 design polish (subagent-led)"}
+      {"round": 2, "score_delta": 0.55, "score": "v1.2 P0 hidden visibility fix + 9 design polish (subagent-led)"},
+      {"round": 3, "score_delta": 0.95, "score": "v1.2 open-sourced + landing live (gh repo + 3 hero imgs + vercel auto-deploy)"}
     ],
-    "final_score": "+1.10 vs baseline (cumulative feature + bugfix delta)",
+    "final_score": "+2.05 vs baseline (cumulative feature + bugfix + distribution delta)",
     "stability": "STABLE",
     "ledger_path": "ceo-rounds/ledger.tsv",
     "baseline_round_path": "ceo-rounds/round-000-baseline.md",
@@ -193,6 +194,18 @@
       "decision": "declare_stable",
       "reasoning": "User screenshot showed 7 onboarding pages stacking on a single page (P0 visibility bug from round-001). User instructed CEO to dispatch designer subagent. CEO dispatched frontend-design subagent which: (P0) added [hidden]{display:none!important} at css line 7 - .kg-page{display:flex} was overriding UA hidden attr; (P1) page slide-in 180ms / stepper active-only labels / active dot halo+scale / panel min-height 460 / primary btn lift; (P2) feature-list dots / cat-row :has(:checked) left border / h1-sub italic; (P3) showPage focuses h1 for a11y. Subagent live-tested via local http server + chrome probe: 1 visible page on load. Onboarding 33K -> 35.9K (under 80K budget). 30/30 sample retest 100%. CSS ASCII 0 hit. node --check pass. ceo-rounds-verify exit 0. Business logic untouched (state machine / PIN_SETUP+VERIFY / message types).",
       "timestamp": "2026-05-05T04:35:00Z"
+    },
+    {
+      "round": 3,
+      "decision": "declare_stable",
+      "reasoning": "User asked: 1) submit project to github lukeliu95 open source / 2) build landing page with gei-imagine multi-modal images / 3) deploy on vercel + link to github. CEO dispatched 2 parallel subagents (gei-imagine + frontend-design landing) + main session prepared GitHub repo. Imagine subagent fire-and-forget (returned before APImart tasks completed) - main session fallback direct invocation with parallel `wait` to gather 3 images. Generated hero-shield (4K 21:9 5.5MB raw -> 281KB jpg q80), hero-wizard (2K 16:9 -> 122KB), hero-privacy (2K 16:9 -> 203KB) total 596 KB. Landing subagent produced 9-section index.html (17.8K) + style.css (15.7K) + vercel.json + README + robots.txt with GA G-NWMQ1ZWXL1 only analytics, dark-default Superhuman-derived. Linter post-processed png->jpg refs. GitHub repo: gh repo create lukeliu95/kid-guard --public --source=. --push -> 86 files initial commit. Vercel deploy: vercel --prod --yes from repo root auto-detected git tree + auto-connected GitHub repo. Production URL https://kid-guard-pi.vercel.app HTTP 200 / 0.5s, hero-shield.jpg 200, GA gtag injected x2. Future git push triggers auto-rebuild. extension/ untouched (30/30 sample fixture still 100%).",
+      "timestamp": "2026-05-05T05:55:00Z",
+      "deliverables": {
+        "github": "https://github.com/lukeliu95/kid-guard",
+        "vercel_alias": "https://kid-guard-pi.vercel.app",
+        "vercel_production": "https://kid-guard-igruxjr0m-lukes-projects-e427a219.vercel.app",
+        "vercel_project": "https://vercel.com/lukes-projects-e427a219/kid-guard"
+      }
     }
   ]
 }
