@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KidGuard - 守住孩子的注意力, 不打扰你们的关系</title>
 <meta name="description" content="KidGuard 是一款 Chrome 浏览器扩展, 内置 1060 个精选黑名单 / 时段锁 / 搜索关键词拦截 / PIN 守门 / 零数据外传, 为 12-15 岁孩子的注意力建一道屏障。">
-<meta name="theme-color" content="#0E0F12">
+<meta name="theme-color" content="#FAF6E8">
 <meta property="og:type" content="website">
 <meta property="og:title" content="KidGuard - 守住孩子的注意力">
 <meta property="og:description" content="Chrome 浏览器扩展. 1060 个内置黑名单 / 时段锁 / PIN 守门 / 零外传.">
-<meta property="og:image" content="assets/hero-shield.jpg">
+<meta property="og:image" content="assets/hero-cover.jpg">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z' fill='%235E7CE2' stroke='%235E7CE2' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M7 10.2 9.2 12.4 13.4 8.2' fill='none' stroke='%23ECEDEE' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z' fill='%235E7CE2' stroke='%232D2A24' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M7 10.2 9.2 12.4 13.4 8.2' fill='none' stroke='%23FAF6E8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWMQ1ZWXL1"></script>
 <script>
@@ -28,32 +28,33 @@ gtag('config', 'G-NWMQ1ZWXL1');
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="KidGuard 首页">
       <svg class="brand-mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span class="brand-name">KidGuard</span>
     </a>
     <nav class="site-nav" aria-label="主导航">
-      <a href="#features">功能</a>
-      <a href="#privacy">隐私</a>
-      <a href="#install">安装</a>
-      <a href="https://github.com/lukeliu95/kid-guard" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="gh-link" href="https://github.com/lukeliu95/kid-guard" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
 
+<!-- 1. Hero -->
 <section class="hero" aria-label="主视觉">
-  <div class="hero-bg" style="background-image: url('assets/hero-shield.jpg')" aria-hidden="true"></div>
+  <div class="hero-bg" style="background-image: url('assets/hero-cover.jpg')" aria-hidden="true"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="container hero-inner">
-    <p class="hero-eyebrow">Chrome 浏览器扩展 · v1.0.0 · 中文优先</p>
-    <h1 class="hero-title">守住孩子的注意力,<br>不打扰你们的关系</h1>
+    <p class="hero-eyebrow">
+      <svg class="doodle-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L14 9 L21 10 L16 15 L17 22 L12 18 L7 22 L8 15 L3 10 L10 9 Z"/></svg>
+      Chrome 扩展 · v1.0.0 · 一家三口的小屏障
+    </p>
+    <h1 class="hero-title">守住孩子的注意力,<br><span class="underline-warm">不打扰你们的关系</span></h1>
     <p class="hero-sub">1060 个内置网站精选黑名单 · 时段锁 · 关键词拦截 · 父母 PIN 守门 · 零数据外传</p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="https://github.com/lukeliu95/kid-guard" target="_blank" rel="noopener noreferrer">在 GitHub 安装</a>
-      <a class="btn btn-ghost" href="#demo">查看演示</a>
+      <a class="btn btn-ghost" href="#block-demo">看看它怎么挡</a>
     </div>
     <ul class="hero-bullets" role="list">
       <li>0 npm 依赖</li>
@@ -64,46 +65,78 @@ gtag('config', 'G-NWMQ1ZWXL1');
   </div>
 </section>
 
-<section class="section pain" aria-labelledby="pain-title">
+<!-- 2. Block-demo -->
+<section class="section block-demo" id="block-demo" aria-labelledby="block-demo-title">
   <div class="container">
-    <header class="section-head">
-      <p class="kicker">为什么不直接用 BlockSite</p>
-      <h2 id="pain-title">现成方案不够用,我们写了一个</h2>
-      <p class="lede">大多数家长控制工具要么名单是英文站为主, 要么数据上云, 要么 PIN 只是装饰。我们一项一项把它们补齐。</p>
+    <header class="section-head" style="text-align:center; margin-inline:auto;">
+      <p class="kicker">那一秒发生了什么</p>
+      <h2 id="block-demo-title">孩子点游戏的瞬间, KidGuard 出现</h2>
     </header>
-    <div class="compare">
-      <article class="compare-col">
-        <h3>BlockSite 等海外扩展</h3>
-        <ul>
-          <li class="con">名单偏英文站, 大陆游戏 / 抽卡 / 短视频几乎不收</li>
-          <li class="con">免费版限制条目数, 高级功能要订阅</li>
-          <li class="con">同步用户偏好到云端, 不放心未成年数据外传</li>
-          <li class="con">PIN 只锁卸载, 不锁名单编辑</li>
-        </ul>
+    <div class="demo-frame">
+      <img src="assets/hero-blocking.jpg" alt="漫画分镜: 盾牌 mascot 挡住孩子点游戏图标的画面" loading="lazy">
+    </div>
+    <p class="demo-caption">
+      不是冷冰冰的 403 页面 - 是一个温柔的盾牌站在那里, 配一句励志语 "今天的努力, 是明天的礼物"。
+      孩子被拦下时不会被羞辱, 父母也不用解释。
+    </p>
+  </div>
+</section>
+
+<!-- 3. Chart-1060 -->
+<section class="section chart-1060" aria-labelledby="chart-1060-title">
+  <div class="container">
+    <header class="section-head" style="text-align:center; margin-inline:auto;">
+      <p class="kicker">开箱即拦的清单</p>
+      <h2 id="chart-1060-title">1060 个域名 · 7 类自动屏蔽</h2>
+      <p class="lede" style="margin-inline:auto;">来自一份手工筛选的中文互联网清单 - 大陆游戏 / 抽卡 / 短视频 / 赌博 / VPN, 都收齐了。</p>
+    </header>
+    <div class="chart-grid">
+
+      <article class="cat-card">
+        <p class="cat-num">200</p>
+        <p class="cat-name">games / 游戏类</p>
+        <p class="cat-desc">主流端游 / 页游 / 手游官网及登录入口</p>
       </article>
-      <article class="compare-col">
-        <h3>国产同类 / 路由器方案</h3>
-        <ul>
-          <li class="con">SaaS 形态, 浏览数据进厂商服务器</li>
-          <li class="con">多在路由层, 装机门槛高 / 不便宜</li>
-          <li class="con">没有"孩子 12-15 岁"的人群专属语调, 拦截页冷漠</li>
-          <li class="con">几乎不带搜索关键词拦截</li>
-        </ul>
+
+      <article class="cat-card">
+        <p class="cat-num">220</p>
+        <p class="cat-name">gambling / 赌博类</p>
+        <p class="cat-desc">境外博彩 / 体彩外围 / 链上赌站</p>
       </article>
-      <article class="compare-col compare-col-self">
-        <h3>KidGuard</h3>
-        <ul>
-          <li class="pro">内置 7 类 · 1060 个大陆主流游戏 / 抽卡 / 短视频 / 赌博 / VPN 域名</li>
-          <li class="pro">PIN 守门到"改名单 / 关分类"这一层</li>
-          <li class="pro">所有数据 chrome.storage.local, 无任何 outbound 请求</li>
-          <li class="pro">7 步 onboarding, 普通家长 3 分钟装完</li>
-          <li class="pro">拦截页用励志语, 不羞辱孩子</li>
-        </ul>
+
+      <div class="chart-center">
+        <img src="assets/chart-1060.jpg" alt="信息图: 1060 大数字 + 7 类图标围绕, 绘本风格" loading="lazy">
+      </div>
+
+      <article class="cat-card">
+        <p class="cat-num">210</p>
+        <p class="cat-name">adult / 成人内容</p>
+        <p class="cat-desc">成人站 / 暗示性广告引流 / 软色情</p>
       </article>
+
+      <article class="cat-card">
+        <p class="cat-num">150</p>
+        <p class="cat-name">douyin_like / 短视频流</p>
+        <p class="cat-desc">抖音 / 快手 / 视频号 H5 等沉浸流</p>
+      </article>
+
+      <article class="cat-card" style="grid-column:1;">
+        <p class="cat-num">130</p>
+        <p class="cat-name">social_short_video</p>
+        <p class="cat-desc">小红书 / B 站短视频 / 推荐流</p>
+      </article>
+
+      <article class="cat-card" style="grid-column:3;">
+        <p class="cat-num">100+50</p>
+        <p class="cat-name">gacha / vpn_proxy</p>
+        <p class="cat-desc">抽卡充值小游戏 + 翻墙代理域名</p>
+      </article>
+
     </div>
   </div>
 </section>
 
+<!-- 4. Features -->
 <section class="section features" id="features" aria-labelledby="features-title">
   <div class="container">
     <header class="section-head">
@@ -115,7 +148,7 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3 4 6v6c0 4.5 3.4 8.5 8 9.5 4.6-1 8-5 8-9.5V6l-8-3Z"/>
             <path d="m8 12 3 3 5-6"/>
           </svg>
@@ -126,7 +159,7 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="6"/>
             <path d="m20 20-4.3-4.3"/>
             <path d="M8 11h6"/>
@@ -138,7 +171,7 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="9"/>
             <path d="M12 7v5l3 2"/>
           </svg>
@@ -149,10 +182,10 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="10" width="14" height="10" rx="2"/>
             <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-            <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+            <circle cx="12" cy="15" r="1.4" fill="currentColor"/>
           </svg>
         </div>
         <h3>PIN 守门 · 只有家长能改</h3>
@@ -161,7 +194,7 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="5" width="16" height="14" rx="2"/>
             <path d="M8 13v3"/>
             <path d="M12 10v6"/>
@@ -174,7 +207,7 @@ gtag('config', 'G-NWMQ1ZWXL1');
 
       <article class="feature-card">
         <div class="feature-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 7h16"/>
             <path d="M4 12h16"/>
             <path d="M4 17h10"/>
@@ -189,51 +222,47 @@ gtag('config', 'G-NWMQ1ZWXL1');
   </div>
 </section>
 
-<section class="section privacy" id="privacy" aria-labelledby="privacy-title">
-  <div class="container privacy-inner">
-    <div class="privacy-text">
-      <p class="kicker">宪法级承诺</p>
-      <h2 id="privacy-title">零数据外传</h2>
-      <p class="lede emphasis">不监控. 不上报. 不画像. 这不是营销话术 - 是写进 SOUL.md 的硬约束, 任何违反都是 Bug。</p>
-      <ul class="invariants">
-        <li><strong>chrome.storage.local 全本地</strong> - 规则 / 报表 / PIN 哈希全部本机, 浏览器卸载即清。</li>
-        <li><strong>PIN 用 SHA256 + salt</strong> - 不存原文, 不可猜, 5 次错冷却 30 秒。</li>
-        <li><strong>无 telemetry · 无 cloud sync</strong> - 任何 fetch / XHR / WebSocket 到外部域名都被禁止。</li>
-        <li><strong>Network panel 永远是空的</strong> - 唯一的 fetch 调用是 chrome.runtime.getURL 读本地 quotes.json。</li>
-      </ul>
-      <blockquote class="pull-quote">
-        "我承诺三件事: 零外传, 零残留, PIN 不可猜。违反任何一件都属于 Bug。"
-        <cite>- KidGuard SOUL.md</cite>
-      </blockquote>
-    </div>
-    <div class="privacy-art">
-      <img src="assets/hero-privacy.jpg" alt="本地存储概念图: 数据留在设备内, 不外传" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<section class="section demo" id="demo" aria-labelledby="demo-title">
+<!-- 6. Chart-onboarding -->
+<section class="section chart-onboarding" aria-labelledby="onb-title">
   <div class="container">
-    <header class="section-head">
-      <p class="kicker">首次安装体验</p>
-      <h2 id="demo-title">7 步引导 · 让 PIN 不被遗忘</h2>
-      <p class="lede">没有 PIN 就没有保护; 我们把 PIN 设置做成了不可跳过的第一步。</p>
+    <header class="section-head" style="text-align:center; margin-inline:auto; max-width:780px;">
+      <p class="kicker">首次安装就是首次理解</p>
+      <h2 id="onb-title" class="onb-headline">7 步引导, <span class="accent">一页一页</span>, 不慌不乱</h2>
+      <p class="onb-sub">没有 PIN 就没有保护; 我们把 PIN 设置做成不可跳过的第一步。每一步都有手绘小图配画外音, 像翻一本说明绘本。</p>
     </header>
-    <div class="demo-art">
-      <img src="assets/hero-wizard.jpg" alt="onboarding 7 步引导流程示意" loading="lazy">
+    <div class="onb-frame">
+      <img src="assets/chart-onboarding.jpg" alt="7 步漫画分镜横向排, 日式 storyboard panels: 介绍 设PIN 确认 退出问题 选分类 高级 完成" loading="lazy">
     </div>
-    <ol class="step-rail" aria-label="onboarding 步骤">
-      <li><span class="step-dot">1</span><span class="step-label">介绍</span></li>
-      <li><span class="step-dot">2</span><span class="step-label">设 PIN</span></li>
-      <li><span class="step-dot">3</span><span class="step-label">确认 PIN</span></li>
-      <li><span class="step-dot">4</span><span class="step-label">退出问题</span></li>
-      <li><span class="step-dot">5</span><span class="step-label">拦截分类</span></li>
-      <li><span class="step-dot">6</span><span class="step-label">高级设置</span></li>
-      <li><span class="step-dot is-current">7</span><span class="step-label">完成</span></li>
-    </ol>
   </div>
 </section>
 
+<!-- 7. Chart-privacy -->
+<section class="section chart-privacy" id="privacy" aria-labelledby="privacy-title">
+  <div class="container">
+    <div class="privacy-grid">
+      <div class="privacy-art-frame">
+        <img src="assets/chart-privacy.jpg" alt="数据流被守护的漫画: 小屋 + 屏障 + 拦回的爪子, 暖色调" loading="lazy">
+      </div>
+      <div class="privacy-text">
+        <p class="kicker">宪法级承诺</p>
+        <h2 id="privacy-title">零数据外传, 是承诺也是底线</h2>
+        <p class="lede emphasis">不监控. 不上报. 不画像. 这不是营销话术 - 是写进 SOUL.md 的硬约束, 任何违反都是 Bug。</p>
+        <ul class="invariants">
+          <li><strong>chrome.storage.local 全本地</strong> - 规则 / 报表 / PIN 哈希全部本机, 浏览器卸载即清。</li>
+          <li><strong>PIN 用 SHA256 + salt</strong> - 不存原文, 不可猜, 5 次错冷却 30 秒。</li>
+          <li><strong>无 telemetry · 无 cloud sync</strong> - 任何 fetch / XHR / WebSocket 到外部域名都被禁止。</li>
+          <li><strong>Network panel 永远是空的</strong> - 唯一的 fetch 是 chrome.runtime.getURL 读本地 quotes.json。</li>
+        </ul>
+        <blockquote class="pull-quote">
+          "我承诺三件事: 零外传, 零残留, PIN 不可猜。违反任何一件都属于 Bug。"
+          <cite>- KidGuard SOUL.md</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Install -->
 <section class="section install" id="install" aria-labelledby="install-title">
   <div class="container">
     <header class="section-head">
@@ -243,28 +272,29 @@ gtag('config', 'G-NWMQ1ZWXL1');
     </header>
     <ol class="install-steps">
       <li>
-        <h3>1 · 下载源码</h3>
+        <h3>下载源码</h3>
         <p>从 GitHub clone 或下载 zip:</p>
         <pre><code>git clone https://github.com/lukeliu95/kid-guard.git
 cd kid-guard</code></pre>
       </li>
       <li>
-        <h3>2 · 构建 dist</h3>
+        <h3>构建 dist</h3>
         <p>跑 build 脚本, 输出 <code>extension/dist/</code>:</p>
         <pre><code>bash extension/build.sh</code></pre>
       </li>
       <li>
-        <h3>3 · 加载到 Chrome</h3>
+        <h3>加载到 Chrome</h3>
         <p>打开 <code>chrome://extensions</code>, 右上角开"开发者模式", 点"加载已解压的扩展程序", 选 <code>extension/dist/</code> 目录。</p>
       </li>
       <li>
-        <h3>4 · 完成 onboarding</h3>
+        <h3>完成 onboarding</h3>
         <p>扩展自动跳到引导页 - 设 PIN + 退出问题 + 选拦截分类。3 分钟走完, 立刻生效。</p>
       </li>
     </ol>
   </div>
 </section>
 
+<!-- 9. FAQ -->
 <section class="section faq" aria-labelledby="faq-title">
   <div class="container">
     <header class="section-head">
@@ -273,35 +303,35 @@ cd kid-guard</code></pre>
     </header>
     <div class="faq-list">
       <details>
-        <summary>为什么不上 Chrome Web Store?</summary>
+        <summary><span>为什么不上 Chrome Web Store?</span></summary>
         <p>v1 是家庭自用形态, 上 store 需要写隐私政策 / 走商店审核 / 开发者账号 5 美元一次。我们想优先把功能做扎实再考虑分发渠道。源码完全开放, 任何家长可以自己 load unpacked。</p>
       </details>
       <details>
-        <summary>孩子能绕过吗?</summary>
+        <summary><span>孩子能绕过吗?</span></summary>
         <p>能 - chrome://extensions 页面 MV3 不允许扩展阻止自己被禁用, 这是浏览器机制限制。但孩子要绕过得在父母不在时禁用扩展, 一旦再打开就恢复; 而且 PIN 守住了"改名单 / 关分类", 比 BlockSite 这类只锁卸载的多走一层。这是技术能做的边界, 我们不假装能做更多。</p>
       </details>
       <details>
-        <summary>支持 Edge / Firefox 吗?</summary>
+        <summary><span>支持 Edge / Firefox 吗?</span></summary>
         <p>v1 仅支持 Chrome (≥ 113)。Edge 用 Chromium 内核理论可装但未验证。Firefox 的 declarativeNetRequest 实现差异较大, v2 评估再说。</p>
       </details>
       <details>
-        <summary>数据真的没有上传?</summary>
+        <summary><span>数据真的没有上传?</span></summary>
         <p>真的。打开 Chrome DevTools → Network 面板, 任意场景下都不会看到 outbound 请求。源码里 grep <code>fetch / XMLHttpRequest / WebSocket</code> 唯一一处是 <code>chrome.runtime.getURL('data/quotes.json')</code> 读本地励志语文件。</p>
       </details>
       <details>
-        <summary>我忘了 PIN 怎么办?</summary>
+        <summary><span>我忘了 PIN 怎么办?</span></summary>
         <p>PIN 锁屏页有"忘了 PIN"链接, 输入 onboarding 时填的退出问题答案 (例: "妈妈第一辆车的牌子") 就能重设。答错 3 次锁 1 小时。如果连退出问题答案也忘了, 只能在 chrome://extensions 移除扩展再重装 - 历史记录会清空, 这是设计上的代价。</p>
       </details>
       <details>
-        <summary>怎么加新的屏蔽网站?</summary>
+        <summary><span>怎么加新的屏蔽网站?</span></summary>
         <p>打开扩展 popup → "进入 options" → 输 PIN → "黑名单"标签 → 添加域名。子域名通配自动包含 (如填 example.com 同时拦 m.example.com / www.example.com)。改完立即生效, 不用重启浏览器。</p>
       </details>
       <details>
-        <summary>为什么不卡哇伊一点?</summary>
-        <p>因为这是工具不是玩具。Superhuman 风克制有力的视觉是为了让父母 30 秒能改完一项设置。"萌系" 容易让人误以为是给孩子看的, 但孩子不是用户, 父母才是。</p>
+        <summary><span>为什么落地页是漫画风但产品本身不是?</span></summary>
+        <p>因为这是营销面 vs 产品面的两套语言。落地页要让父母三秒钟感到温暖, 知道这不是冷冰冰的监控工具; 产品本身 (popup / options) 是冷静的工具调, 让父母 30 秒能改完一项设置。两套节奏服务两类瞬间, 不冲突。</p>
       </details>
       <details>
-        <summary>未来会加哪些功能?</summary>
+        <summary><span>未来会加哪些功能?</span></summary>
         <p>Phase D 候选清单: 时间预算 (每天某分类 N 分钟) / 重定向到学习资源 / 卸载报警 / 跨设备同步 / Edge 支持 / Web Store 上架。具体看 <code>docs/requirements-spec.md</code> § 9 Future Considerations。家长说"GEI 产品更新"就会重进 Phase D。</p>
       </details>
     </div>
@@ -314,8 +344,8 @@ cd kid-guard</code></pre>
   <div class="container footer-inner">
     <div class="footer-brand">
       <svg class="brand-mark" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-        <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <span>KidGuard</span>
     </div>
@@ -326,9 +356,9 @@ cd kid-guard</code></pre>
       <a href="https://github.com/lukeliu95" target="_blank" rel="noopener noreferrer">作者</a>
     </nav>
     <p class="footer-meta">
-      MIT License &middot; Personal / family use &middot;
-      Built by <a href="https://github.com/lukeliu95" target="_blank" rel="noopener noreferrer">GEI Agent</a> &middot;
-      <span>2026</span>
+      Built with <span class="footer-heart" aria-hidden="true">&hearts;</span> by
+      <a href="https://github.com/lukeliu95" target="_blank" rel="noopener noreferrer">GEI Agent</a>
+      &middot; MIT License &middot; 2026
     </p>
   </div>
 </footer>
