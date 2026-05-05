@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=360, initial-scale=1" />
+  <title>KidGuard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="kg-app" role="application" aria-label="KidGuard 快速面板">
+    <header class="kg-header">
+      <div class="kg-brand">
+        <svg class="kg-logo" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="kg-brand-name">KidGuard</span>
+      </div>
+      <span id="kg-status-pill" class="kg-pill kg-pill--normal" role="status" aria-live="polite">正常</span>
+    </header>
+
+    <div id="kg-banner" class="kg-banner" hidden role="alert">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8 4.5V8L10.2 9.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span id="kg-banner-text">时段锁中</span>
+    </div>
+
+    <section class="kg-card" aria-labelledby="kg-blocked-title">
+      <div class="kg-card-head">
+        <h2 id="kg-blocked-title" class="kg-card-title">拦截 TOP10</h2>
+        <span class="kg-card-meta">近 7 天</span>
+      </div>
+      <ol id="kg-list-blocked" class="kg-list" aria-busy="true">
+        <li class="kg-empty">加载中...</li>
+      </ol>
+    </section>
+
+    <section class="kg-card" aria-labelledby="kg-visited-title">
+      <div class="kg-card-head">
+        <h2 id="kg-visited-title" class="kg-card-title">访问 TOP10</h2>
+        <span class="kg-card-meta">近 7 天</span>
+      </div>
+      <ol id="kg-list-visited" class="kg-list" aria-busy="true">
+        <li class="kg-empty">加载中...</li>
+      </ol>
+    </section>
+
+    <footer class="kg-footer">
+      <button id="kg-open-options" type="button" class="kg-btn kg-btn--primary">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <circle cx="8" cy="8" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2M12.6 3.4 11.2 4.8M4.8 11.2 3.4 12.6M12.6 12.6 11.2 11.2M4.8 4.8 3.4 3.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        打开管理后台
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

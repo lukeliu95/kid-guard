@@ -1,0 +1,145 @@
+{
+  "extName": {
+    "message": "KidGuard 家庭守护"
+  },
+  "extDescription": {
+    "message": "家庭友好的浏览器拦截扩展 · 帮助孩子专注学习"
+  },
+  "popupTitle": {
+    "message": "KidGuard"
+  },
+  "popupTab7Days": {
+    "message": "近 7 天"
+  },
+  "popupTabBlocked": {
+    "message": "拦截 TOP 10"
+  },
+  "popupTabVisited": {
+    "message": "访问 TOP 10"
+  },
+  "popupOpenOptions": {
+    "message": "打开设置"
+  },
+  "optionsTitle": {
+    "message": "KidGuard 设置"
+  },
+  "optionsTabCategories": {
+    "message": "分类拦截"
+  },
+  "optionsTabCustom": {
+    "message": "自定义名单"
+  },
+  "optionsTabSchedule": {
+    "message": "时段锁"
+  },
+  "optionsTabKeywords": {
+    "message": "关键词拦截"
+  },
+  "optionsTabPin": {
+    "message": "PIN 与恢复"
+  },
+  "blockedTitle": {
+    "message": "此页面已被 KidGuard 拦截"
+  },
+  "blockedSubtitle": {
+    "message": "现在是学习的好时光,稍后再回来吧。"
+  },
+  "blockedReasonCategory": {
+    "message": "命中分类:$CAT$",
+    "placeholders": {
+      "cat": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedReasonManual": {
+    "message": "命中父母手动添加的名单"
+  },
+  "blockedReasonKeyword": {
+    "message": "搜索关键词被拦截"
+  },
+  "scheduleLockSubtitle": {
+    "message": "现在处于父母设置的专注时段,请稍后再访问。"
+  },
+  "keywordBlockSubtitle": {
+    "message": "你输入的搜索关键词不适合现在浏览。"
+  },
+  "onboardingTitle": {
+    "message": "欢迎使用 KidGuard"
+  },
+  "onboardingStep1": {
+    "message": "第 1 步 · 设置 PIN"
+  },
+  "onboardingStep2": {
+    "message": "第 2 步 · 设置恢复问题"
+  },
+  "onboardingStep3": {
+    "message": "第 3 步 · 完成"
+  },
+  "pinPrompt": {
+    "message": "请输入 4-6 位 PIN"
+  },
+  "pinPromptConfirm": {
+    "message": "请再次确认 PIN"
+  },
+  "pinErrorMismatch": {
+    "message": "两次输入的 PIN 不一致"
+  },
+  "pinErrorWrong": {
+    "message": "PIN 错误"
+  },
+  "pinErrorCooldown": {
+    "message": "尝试次数过多,请稍后再试"
+  },
+  "pinForgot": {
+    "message": "忘记 PIN?"
+  },
+  "recoveryQuestionDefault1": {
+    "message": "你的第一只宠物的名字是?"
+  },
+  "recoveryQuestionDefault2": {
+    "message": "你最喜欢的老师姓什么?"
+  },
+  "recoveryQuestionDefault3": {
+    "message": "你出生的城市是?"
+  },
+  "recoveryAnswerPrompt": {
+    "message": "请输入恢复问题的答案"
+  },
+  "buttonSave": {
+    "message": "保存"
+  },
+  "buttonCancel": {
+    "message": "取消"
+  },
+  "buttonAdd": {
+    "message": "添加"
+  },
+  "buttonDelete": {
+    "message": "删除"
+  },
+  "buttonConfirm": {
+    "message": "确认"
+  },
+  "categoryGames": {
+    "message": "游戏类"
+  },
+  "categoryAdult": {
+    "message": "成人内容"
+  },
+  "categorySocialShortVideo": {
+    "message": "社交短视频"
+  },
+  "categoryDouyinLike": {
+    "message": "抖音类"
+  },
+  "categoryGambling": {
+    "message": "博彩"
+  },
+  "categoryGachaRecharge": {
+    "message": "抽卡 / 代充"
+  },
+  "categoryVpnProxy": {
+    "message": "VPN / 代理"
+  }
+}

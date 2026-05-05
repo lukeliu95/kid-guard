@@ -1,0 +1,198 @@
+{
+  "$schema": "gei-pipeline-state-v3",
+  "pipeline_version": "6.2.0",
+  "created_at": "2026-05-05T00:00:00Z",
+  "updated_at": "2026-05-05T00:30:00Z",
+  "output_dir": "/Users/lukeliu/Sparticle/GEI-Agent/output/kid-guard",
+
+  "current_phase": "done",
+  "current_step": "delivered_v1.2",
+  "phase_status": {
+    "gei-discover": "completed",
+    "gei-generate": "completed",
+    "gei-qualify": "completed",
+    "product-evolution": "completed"
+  },
+
+  "completed_steps": [
+    { "step": "orchestrator-bootstrap", "name": "Orchestrator JTBD interview (Step 0 in main session)", "completed_at": "2026-05-05T00:00:00Z", "artifact": "pipeline-state.json (initial)" },
+    { "step": "0-formalize", "name": "Discovery Interview Formalization", "completed_at": "2026-05-05T00:10:00Z", "artifact": "docs/discovery-interview.md" },
+    { "step": "1", "name": "Requirements Intake & Standardization", "completed_at": "2026-05-05T00:15:00Z", "artifact": "docs/requirements-spec.md" },
+    { "step": "1.5", "name": "Spec Self-Review (4 checks, embedded)", "completed_at": "2026-05-05T00:15:00Z", "artifact": "docs/requirements-spec.md (section 12)" },
+    { "step": "3", "name": "Requirements Decomposition + Type Classification", "completed_at": "2026-05-05T00:20:00Z", "artifact": "docs/decomposition-table.md" },
+    { "step": "3.3", "name": "UI Brief", "completed_at": "2026-05-05T00:25:00Z", "artifact": "docs/ui-brief.md" },
+    { "step": "3.5", "name": "User Review Gate (approved)", "completed_at": "2026-05-05T00:28:00Z", "artifact": "user_decisions[1]" }
+  ],
+
+  "confirmed_params": {
+    "customer_name": "kid-guard",
+    "project_type": "ui_only",
+    "ui_scope": {
+      "entrypoint": "browser-extension",
+      "static_or_dynamic": "static",
+      "auth_required": false,
+      "target_routes": ["popup.html", "options.html", "blocked.html", "onboarding.html"],
+      "stack": "vanilla",
+      "visual_reference": "superhuman"
+    },
+    "output_dir": "/Users/lukeliu/Sparticle/GEI-Agent/output/kid-guard",
+    "platform": {
+      "browser": "chrome",
+      "manifest_version": 3,
+      "additional_browsers_v2": ["edge", "firefox"]
+    },
+    "audience": {
+      "primary_user": "parent",
+      "controlled_user": "kid",
+      "kid_age_band": "junior_high_12_15",
+      "primary_language": "zh-CN",
+      "secondary_languages": ["en"]
+    },
+    "block_ux": {
+      "mode": "hard_block_with_motivational",
+      "redirect_to_learning": false,
+      "show_motivational_quote": true
+    },
+    "blocklist_management": {
+      "mode": "builtin_categories_plus_manual",
+      "builtin_categories": ["games", "adult", "social_short_video", "douyin_like", "gambling", "gacha_recharge", "vpn_proxy"],
+      "default_seed_size_target": 1000,
+      "manual_addition_allowed": true
+    },
+    "v1_features": {
+      "core_blocking": true,
+      "schedule_lock": true,
+      "weekly_report": true,
+      "search_keyword_block": true,
+      "time_budget": false,
+      "redirect_to_learning_resources": false
+    },
+    "pin_protection": {
+      "first_run_force_setup": true,
+      "exit_question_required": true,
+      "guard_blocklist_edit": true,
+      "guard_category_disable": true,
+      "guard_pause_blocking": false,
+      "guard_uninstall_alert": false
+    },
+    "release_channel": { "v1": "local_unpacked", "store_v2": "chrome_web_store" },
+    "phase_d_at_v1": false,
+    "threshold": 75,
+    "max_rounds": 3,
+    "trials_per_case": 3,
+    "cases_count": 10,
+    "calibrated_thresholds": null
+  },
+
+  "skill_status": {
+    "kg-blocker":          { "type": "script",  "skill_type": "standard", "funnel_layer": "L1_processing", "generated": false },
+    "kg-pin-guard":        { "type": "script",  "skill_type": "standard", "funnel_layer": "L1_processing", "generated": false },
+    "kg-schedule-lock":    { "type": "script",  "skill_type": "standard", "funnel_layer": "L1_processing", "generated": false },
+    "kg-search-blocker":   { "type": "script",  "skill_type": "standard", "funnel_layer": "L1_processing", "generated": false },
+    "kg-stats":            { "type": "script",  "skill_type": "standard", "funnel_layer": "L2_output",     "generated": false },
+    "kg-popup-ui":         { "type": "ui",      "skill_type": "ui",       "funnel_layer": "L2_output",     "generated": false },
+    "kg-options-ui":       { "type": "ui",      "skill_type": "ui",       "funnel_layer": "L2_output",     "generated": false },
+    "kg-blocked-ui":       { "type": "ui",      "skill_type": "ui",       "funnel_layer": "L2_output",     "generated": false },
+    "kg-onboarding-ui":    { "type": "ui",      "skill_type": "ui",       "funnel_layer": "L2_output",     "generated": false },
+    "kg-manifest":         { "type": "script",  "skill_type": "config",   "funnel_layer": "L0_input",      "generated": false }
+  },
+
+  "user_decisions": [
+    {
+      "step": "orchestrator-jtbd",
+      "decision": "params_confirmed",
+      "timestamp": "2026-05-05T00:00:00Z",
+      "details": {
+        "project_code": "kid-guard",
+        "browser_v1": "chrome_only",
+        "kid_age": "12-15",
+        "block_ux": "hard_block_motivational",
+        "blocklist_management": "builtin_plus_manual",
+        "v1_addons": ["schedule_lock", "weekly_report", "search_keyword_block"],
+        "pin_guards": ["first_run_force", "blocklist_edit", "category_disable"],
+        "release_channel_v1": "local_unpacked",
+        "phase_d_at_v1": false,
+        "default_blocklist_seed_size": 1000
+      }
+    },
+    {
+      "step": "3.5",
+      "decision": "phase_a_approved",
+      "timestamp": "2026-05-05T00:28:00Z",
+      "details": {
+        "stack": "vanilla",
+        "visual_reference": "superhuman",
+        "phase_b_scope": "approved as decomposed (18 REQ / 13 modules / 3 knowledge bases)"
+      }
+    }
+  ],
+
+  "reflections": [
+    {
+      "checkpoint": "A",
+      "decision": "CONTINUE",
+      "reasoning": "All 18 REQs covered with no placeholders. 13 modules decomposed (0 Agent / 7 Script / 5 UI / 1 data asset) - reasonable for ui_only. ui-brief.md complete with stack=vanilla and visual_reference=superhuman. User approved Step 3.5 review gate.",
+      "timestamp": "2026-05-05T00:28:00Z",
+      "applied_tracking": {
+        "applied": ["pitfall-20260417", "pitfall-20260415", "pitfall-20260416", "pattern-20260427-130200", "pattern-20260427-130400"],
+        "not_applicable": [],
+        "skipped_unknown": 0
+      }
+    },
+    {
+      "checkpoint": "B",
+      "decision": "CONTINUE",
+      "reasoning": "3 parallel subagents (logic+ui+data) all completed under budget. node --check pass for all JS. 0 outbound fetch (only chrome.runtime.getURL for quotes.json). 4/4 mutation handlers wrapped with gated() server-side. CSS comments ASCII-only verified. Main session fixed 1 bug: PIN_SETUP partial payload by adding updatePin + updateRecovery in pin-guard.js and routing in service-worker.js. All bundle budgets PASS (popup 13.3K/100K, options 55.1K/200K, blocked 7K/50K, onboarding 17.4K/80K, sw 30.7K/50K, ruleset 222.5K/250K, total 376.3K/800K).",
+      "timestamp": "2026-05-05T01:30:00Z"
+    },
+    {
+      "checkpoint": "C",
+      "decision": "FINALIZE",
+      "reasoning": "0 LLM agent so standard pass@k/rubric eval N/A. Replaced with 8 deterministic gates: 7 PASS + 1 deferred to parent install (M3 search keyword manual verify). 30/30 sample blocklist hit = 100% (M2). 1060 unique hosts (M1 >= 1000). 0 outbound (M6). 0 critical issues. v1 ready to ship.",
+      "timestamp": "2026-05-05T02:00:00Z"
+    }
+  ],
+
+  "retrieved_memory_entries": {
+    "A": ["pitfall-20260417", "pitfall-20260415", "pitfall-20260416", "pattern-20260427-130200", "pattern-20260427-130400"]
+  },
+
+  "eval_cases_hashes": {},
+
+  "error_log": [],
+
+  "codeloop_state": {
+    "enabled": true,
+    "rounds_completed": 2,
+    "current_round": 2,
+    "exit_reason": "declare_stable",
+    "scores": [
+      {"round": 0, "score": "v1.0 baseline 8 gates 7 PASS + 1 DEFERRED"},
+      {"round": 1, "score_delta": 0.55, "score": "v1.1 onboarding wizard 7-step + zero regression"},
+      {"round": 2, "score_delta": 0.55, "score": "v1.2 P0 hidden visibility fix + 9 design polish (subagent-led)"}
+    ],
+    "final_score": "+1.10 vs baseline (cumulative feature + bugfix delta)",
+    "stability": "STABLE",
+    "ledger_path": "ceo-rounds/ledger.tsv",
+    "baseline_round_path": "ceo-rounds/round-000-baseline.md",
+    "baseline_snapshot": {
+      "git_sha": "61c8713b94b4db593395f4cd48bac161c898b0ea",
+      "tests_baseline": "static gates: 8 acceptance gates / 7 PASS + 1 deferred (M3 manual)",
+      "scores": {"M1": "PASS", "M2": "PASS", "M3": "DEFERRED", "M4": "PASS", "M5": "PASS", "M6": "PASS", "M7": "PASS", "M8": "PASS"}
+    }
+  },
+  "reflections_d": [
+    {
+      "round": 1,
+      "decision": "declare_stable",
+      "reasoning": "User asked for a 7-step onboarding wizard covering categories + custom-deny + schedule init. Implemented in onboarding.html/.js/.css. PIN_SETUP + auto PIN_VERIFY ensures step 5/6 mutations pass server-side gate without changing sw. options + blocked unchanged (already met user's 'parent-only' intent). Bundle: onboarding 17.4K -> 33.0K, total 376.3K -> 521.5K, zip 72K -> 122.8K, all under budgets. Regression: 30/30 sample still 100%, CSS ASCII still 0 hit, node --check pass. ceo-rounds-verify.sh exit 0. max_rounds=1 -> declare_stable.",
+      "timestamp": "2026-05-05T04:05:00Z"
+    },
+    {
+      "round": 2,
+      "decision": "declare_stable",
+      "reasoning": "User screenshot showed 7 onboarding pages stacking on a single page (P0 visibility bug from round-001). User instructed CEO to dispatch designer subagent. CEO dispatched frontend-design subagent which: (P0) added [hidden]{display:none!important} at css line 7 - .kg-page{display:flex} was overriding UA hidden attr; (P1) page slide-in 180ms / stepper active-only labels / active dot halo+scale / panel min-height 460 / primary btn lift; (P2) feature-list dots / cat-row :has(:checked) left border / h1-sub italic; (P3) showPage focuses h1 for a11y. Subagent live-tested via local http server + chrome probe: 1 visible page on load. Onboarding 33K -> 35.9K (under 80K budget). 30/30 sample retest 100%. CSS ASCII 0 hit. node --check pass. ceo-rounds-verify exit 0. Business logic untouched (state machine / PIN_SETUP+VERIFY / message types).",
+      "timestamp": "2026-05-05T04:35:00Z"
+    }
+  ]
+}

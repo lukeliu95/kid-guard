@@ -1,0 +1,88 @@
+{
+  "manifest_version": 3,
+  "name": "KidGuard",
+  "description": "家庭友好的浏览器拦截扩展 · 帮助孩子专注学习",
+  "version": "0.1.0",
+  "minimum_chrome_version": "111",
+  "default_locale": "zh_CN",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback",
+    "declarativeNetRequestWithHostAccess",
+    "alarms",
+    "webNavigation"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "KidGuard",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "games",
+        "enabled": true,
+        "path": "ruleset/games.json"
+      },
+      {
+        "id": "adult",
+        "enabled": true,
+        "path": "ruleset/adult.json"
+      },
+      {
+        "id": "social_short_video",
+        "enabled": true,
+        "path": "ruleset/social_short_video.json"
+      },
+      {
+        "id": "douyin_like",
+        "enabled": true,
+        "path": "ruleset/douyin_like.json"
+      },
+      {
+        "id": "gambling",
+        "enabled": true,
+        "path": "ruleset/gambling.json"
+      },
+      {
+        "id": "gacha_recharge",
+        "enabled": true,
+        "path": "ruleset/gacha_recharge.json"
+      },
+      {
+        "id": "vpn_proxy",
+        "enabled": true,
+        "path": "ruleset/vpn_proxy.json"
+      },
+      {
+        "id": "schedule_catchall",
+        "enabled": false,
+        "path": "ruleset/schedule_catchall.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked/blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

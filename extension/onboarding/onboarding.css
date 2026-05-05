@@ -1,0 +1,503 @@
+/* KidGuard onboarding - 7-step wizard (welcome / pin / confirm / recovery / categories / advanced / done) */
+/* Comments ASCII-only (pitfall-20260417) */
+
+/* P0 fix: hidden attribute must always collapse the element. */
+/* Without this, .kg-page rule below (display:flex) overrides the */
+/* user-agent [hidden]{display:none}, causing all 7 pages to stack. */
+[hidden] { display: none !important; }
+
+:root {
+  --kg-bg: #0E0F12;
+  --kg-bg-card: #16181D;
+  --kg-bg-input: #1C1F25;
+  --kg-text: #ECEDEE;
+  --kg-text-secondary: #9BA0A8;
+  --kg-text-muted: #6B7280;
+  --kg-accent: #5E7CE2;
+  --kg-accent-hover: #4865D2;
+  --kg-danger: #E5484D;
+  --kg-success: #46A758;
+  --kg-border: #2A2D33;
+  --kg-border-strong: #3A3E47;
+  --kg-radius: 8px;
+  --kg-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --kg-bg: #FAFAFB;
+    --kg-bg-card: #FFFFFF;
+    --kg-bg-input: #F2F3F5;
+    --kg-text: #0E0F12;
+    --kg-text-secondary: #5A6068;
+    --kg-text-muted: #8B919A;
+    --kg-accent: #4865D2;
+    --kg-border: #E5E7EB;
+    --kg-border-strong: #C8CCD3;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--kg-bg);
+  color: var(--kg-text);
+  font-family: var(--kg-font);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.kg-onboarding {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px 48px;
+}
+
+.kg-ob-header {
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 24px;
+}
+.kg-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--kg-text);
+}
+.kg-logo { width: 20px; height: 20px; color: var(--kg-accent); }
+
+/* Stepper */
+.kg-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  width: 100%;
+  max-width: 560px;
+  gap: 8px;
+}
+.kg-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  font-size: 12px;
+  color: var(--kg-text-muted);
+  transition: color 120ms ease-out;
+}
+.kg-step-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--kg-bg-input);
+  color: var(--kg-text-muted);
+  border: 1px solid var(--kg-border);
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out;
+}
+.kg-step.is-active .kg-step-dot {
+  background: var(--kg-accent);
+  color: #fff;
+  border-color: var(--kg-accent);
+  /* P1 emphasis: lift active dot so the user feels "you are here" */
+  transform: scale(1.08);
+  box-shadow: 0 0 0 3px rgba(94, 124, 226, 0.18);
+}
+.kg-step.is-active { color: var(--kg-text); }
+.kg-step.is-done .kg-step-dot {
+  background: var(--kg-success);
+  color: #fff;
+  border-color: var(--kg-success);
+}
+/* P1 stepper: hide non-active labels to free room for 7 steps. */
+/* Only the current step shows its label. */
+.kg-step-label {
+  white-space: nowrap;
+  display: none;
+}
+.kg-step.is-active .kg-step-label { display: inline; }
+
+/* Panel + page */
+.kg-panel {
+  width: 100%;
+  max-width: 560px;
+  background: var(--kg-bg-card);
+  border: 1px solid var(--kg-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  position: relative;
+  /* P1: stable height covers step 5 (7-row category list) and step 6 */
+  /* (two fieldsets) so the page does not jump as the user advances. */
+  min-height: 460px;
+}
+
+.kg-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  /* P1: stronger "page turn" feel - fade + slight slide from right. */
+  animation: kg-page-in 180ms ease-out;
+}
+@keyframes kg-page-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kg-page { animation: none; }
+}
+
+.kg-h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--kg-text);
+  letter-spacing: -0.2px;
+  outline: none;
+}
+.kg-h1:focus-visible {
+  /* Subtle ring only when the user is actually keyboard-navigating. */
+  outline: 2px solid var(--kg-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.kg-help {
+  margin: 0;
+  font-size: 13px;
+  color: var(--kg-text-secondary);
+  line-height: 1.6;
+}
+
+/* Inputs */
+.kg-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  background: var(--kg-bg-input);
+  color: var(--kg-text);
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 120ms ease-out, background 120ms ease-out;
+}
+.kg-input:hover { border-color: var(--kg-border-strong); }
+.kg-input:focus-visible {
+  border-color: var(--kg-accent);
+  outline: 2px solid var(--kg-accent);
+  outline-offset: 2px;
+}
+.kg-input--pin {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 22px;
+  letter-spacing: 8px;
+  text-align: center;
+}
+.kg-input--inline {
+  flex: 1;
+  height: 32px;
+  font-size: 13px;
+  margin-inline-start: 4px;
+}
+
+.kg-error {
+  margin: 0;
+  font-size: 12px;
+  color: var(--kg-danger);
+  min-height: 1em;
+}
+
+/* Radios */
+.kg-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kg-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+  cursor: pointer;
+  transition: background 120ms ease-out, border-color 120ms ease-out;
+  font-size: 13px;
+}
+.kg-radio:hover { background: var(--kg-bg-input); }
+.kg-radio input[type="radio"] {
+  accent-color: var(--kg-accent);
+  margin: 0;
+}
+.kg-radio--custom { gap: 8px; }
+
+/* Buttons */
+.kg-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 12px;
+}
+.kg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 18px;
+  border-radius: var(--kg-radius);
+  border: 1px solid var(--kg-border);
+  background: var(--kg-bg-input);
+  color: var(--kg-text);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease-out, border-color 120ms ease-out;
+}
+.kg-btn:hover { background: var(--kg-bg-card); border-color: var(--kg-border-strong); }
+.kg-btn:focus-visible { outline: 2px solid var(--kg-accent); outline-offset: 2px; }
+.kg-btn--primary {
+  background: var(--kg-accent);
+  border-color: var(--kg-accent);
+  color: #fff;
+  min-width: 104px;
+  /* P1: subtle lift so primary reads as the clickable target */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(94, 124, 226, 0.12);
+}
+.kg-btn--primary:hover {
+  background: var(--kg-accent-hover);
+  border-color: var(--kg-accent-hover);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(94, 124, 226, 0.22);
+}
+.kg-btn--ghost {
+  background: transparent;
+  color: var(--kg-text-secondary);
+  font-size: 12px;
+}
+.kg-btn--ghost:hover { color: var(--kg-text); background: var(--kg-bg-input); }
+
+/* Done page */
+.kg-page--done {
+  align-items: center;
+  text-align: center;
+  padding: 16px 0;
+}
+.kg-done-icon { color: var(--kg-success); width: 64px; height: 64px; }
+.kg-done-icon svg { width: 100%; height: 100%; }
+
+.kg-footnote {
+  margin: 16px 0 0;
+  font-size: 12px;
+  color: var(--kg-text-muted);
+  text-align: center;
+  max-width: 560px;
+}
+
+/* Step 1 welcome - feature list */
+.kg-feature-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--kg-text-secondary);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kg-feature-list li {
+  position: relative;
+  padding-left: 18px;
+}
+/* P2 anchor dot: small accent dot in front of every feature row */
+.kg-feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--kg-accent);
+  opacity: 0.7;
+}
+.kg-feature-list strong { color: var(--kg-text); font-weight: 600; }
+
+/* Step 4 - inline label and recovery answer field */
+.kg-label {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--kg-text-secondary);
+}
+
+/* Step 5 - category list */
+.kg-cat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.kg-cat-row {
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+  padding: 10px 12px;
+  background: var(--kg-bg-input);
+  border-left: 3px solid transparent;
+  transition: border-left-color 120ms ease-out, background 120ms ease-out;
+}
+/* P2: checked state - left accent stripe so the user sees what is on. */
+/* :has() is well supported in Chrome 105+, fully covered by MV3 target. */
+.kg-cat-row:has(input[type="checkbox"]:checked) {
+  border-left-color: var(--kg-accent);
+}
+.kg-cat-row:hover { background: var(--kg-bg-card); }
+.kg-cat-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kg-text);
+  cursor: pointer;
+}
+.kg-cat-label input[type="checkbox"] {
+  accent-color: var(--kg-accent);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.kg-cat-name { flex: 1; }
+.kg-cat-desc {
+  margin: 4px 0 0 26px;
+  font-size: 12px;
+  color: var(--kg-text-muted);
+  line-height: 1.5;
+}
+
+/* Step 6 - fieldsets / textarea / schedule */
+.kg-h1-sub {
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--kg-text-secondary);
+  margin-inline-start: 8px;
+  letter-spacing: 0;
+}
+.kg-fieldset {
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+  padding: 12px 14px;
+  margin: 0 0 12px 0;
+}
+.kg-legend {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--kg-text);
+  padding: 0 6px;
+}
+.kg-help-sm {
+  margin: 4px 0 8px;
+  font-size: 12px;
+  color: var(--kg-text-muted);
+  line-height: 1.5;
+}
+.kg-help-sm code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  background: var(--kg-bg-card);
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--kg-border);
+}
+.kg-textarea {
+  width: 100%;
+  background: var(--kg-bg-input);
+  color: var(--kg-text);
+  border: 1px solid var(--kg-border);
+  border-radius: var(--kg-radius);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  padding: 8px 10px;
+  resize: vertical;
+  min-height: 80px;
+  outline: none;
+}
+.kg-textarea:focus-visible {
+  border-color: var(--kg-accent);
+  outline: 2px solid var(--kg-accent);
+  outline-offset: 2px;
+}
+.kg-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--kg-text);
+  cursor: pointer;
+}
+.kg-checkbox input[type="checkbox"] {
+  accent-color: var(--kg-accent);
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+.kg-sched-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--kg-border);
+}
+.kg-label-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--kg-text-secondary);
+}
+.kg-label-sm input[type="time"] {
+  background: var(--kg-bg-input);
+  color: var(--kg-text);
+  border: 1px solid var(--kg-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  outline: none;
+}
+.kg-label-sm input[type="time"]:focus-visible {
+  border-color: var(--kg-accent);
+  outline: 2px solid var(--kg-accent);
+  outline-offset: 2px;
+}
+
+/* Compact stepper to fit 7 steps */
+/* Labels are hidden by default (only the active step shows its label); */
+/* on very narrow screens hide even the active label so the dot row fits. */
+@media (max-width: 480px) {
+  .kg-step.is-active .kg-step-label { display: none; }
+}

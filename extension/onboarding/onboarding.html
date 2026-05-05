@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>欢迎使用 KidGuard</title>
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body>
+  <main class="kg-onboarding" role="main" aria-labelledby="kg-step-title">
+    <header class="kg-ob-header">
+      <div class="kg-brand">
+        <svg class="kg-logo" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="kg-brand-name">KidGuard 初始化</span>
+      </div>
+    </header>
+
+    <ol class="kg-stepper" aria-label="进度">
+      <li class="kg-step is-active" data-step="1"><span class="kg-step-dot">1</span><span class="kg-step-label">介绍</span></li>
+      <li class="kg-step" data-step="2"><span class="kg-step-dot">2</span><span class="kg-step-label">设 PIN</span></li>
+      <li class="kg-step" data-step="3"><span class="kg-step-dot">3</span><span class="kg-step-label">确认</span></li>
+      <li class="kg-step" data-step="4"><span class="kg-step-dot">4</span><span class="kg-step-label">退出问题</span></li>
+      <li class="kg-step" data-step="5"><span class="kg-step-dot">5</span><span class="kg-step-label">拦截分类</span></li>
+      <li class="kg-step" data-step="6"><span class="kg-step-dot">6</span><span class="kg-step-label">高级</span></li>
+      <li class="kg-step" data-step="7"><span class="kg-step-dot">7</span><span class="kg-step-label">完成</span></li>
+    </ol>
+
+    <section class="kg-panel" id="kg-panel">
+      <!-- Step 1 - Welcome -->
+      <div class="kg-page" data-page="1">
+        <h1 id="kg-step-title" class="kg-h1">欢迎使用 KidGuard</h1>
+        <p class="kg-help">这是一个家庭友好的浏览器拦截扩展, 帮助孩子专注学习。</p>
+        <ul class="kg-feature-list">
+          <li><strong>1060 个内置网站</strong>分 7 类自动拦截 - 游戏 / 成人 / 短视频 / 抖音类 / 赌博 / 抽卡充值 / VPN 代理</li>
+          <li><strong>关键词拦截</strong>覆盖 Google / Baidu / Bing 三大搜索引擎</li>
+          <li><strong>时段锁</strong>支持作息时间(如 22:00-06:00)整段不可上网</li>
+          <li><strong>PIN 守门</strong>只有家长能改设置, 孩子无法自行解除</li>
+          <li><strong>零数据外传</strong> - 所有规则与记录仅在本机, 不上传任何服务器</li>
+        </ul>
+        <p class="kg-help">下面 6 步会引导你完成所有初始设置, 全程约 3 分钟。</p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-1">开始设置</button>
+        </div>
+      </div>
+
+      <!-- Step 2 - Set PIN -->
+      <div class="kg-page" data-page="2" hidden>
+        <h1 class="kg-h1">设置 4-6 位 PIN</h1>
+        <p class="kg-help">这个 PIN 用来保护设置 - 只有输入它的人(你)才能改黑名单、关分类、改时段。请输入 4-6 位数字, 牢牢记住。</p>
+        <input
+          id="kg-pin1"
+          class="kg-input kg-input--pin"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="6"
+          autocomplete="off"
+          aria-label="PIN"
+          placeholder="例如 123456"
+        />
+        <p id="kg-err1" class="kg-error" role="alert" hidden></p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="back-2">返回</button>
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-2">下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 3 - Confirm PIN -->
+      <div class="kg-page" data-page="3" hidden>
+        <h1 class="kg-h1">再输一次确认</h1>
+        <p class="kg-help">两次输入需完全一致, 防止笔误锁死自己。</p>
+        <input
+          id="kg-pin2"
+          class="kg-input kg-input--pin"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="6"
+          autocomplete="off"
+          aria-label="确认 PIN"
+        />
+        <p id="kg-err2" class="kg-error" role="alert" hidden></p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="back-3">返回</button>
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-3">下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 4 - Recovery Q + A -->
+      <div class="kg-page" data-page="4" hidden>
+        <h1 class="kg-h1">设置退出问题</h1>
+        <p class="kg-help">如果哪天忘了 PIN, 答对此问题可在 onboarding 页面重设。问题和答案都不会上传, 仅本机存哈希。</p>
+
+        <div class="kg-radio-group" role="radiogroup" aria-label="退出问题">
+          <label class="kg-radio">
+            <input type="radio" name="recq" value="最早的朋友名字" checked />
+            <span>最早的朋友名字</span>
+          </label>
+          <label class="kg-radio">
+            <input type="radio" name="recq" value="高中第一位班主任" />
+            <span>高中第一位班主任</span>
+          </label>
+          <label class="kg-radio">
+            <input type="radio" name="recq" value="第一只宠物名字" />
+            <span>第一只宠物名字</span>
+          </label>
+          <label class="kg-radio kg-radio--custom">
+            <input type="radio" name="recq" value="custom" />
+            <span>自定义:</span>
+            <input id="kg-recq-custom" class="kg-input kg-input--inline" type="text" maxlength="60" placeholder="输入自定义问题" aria-label="自定义问题" />
+          </label>
+        </div>
+
+        <label for="kg-reca" class="kg-label">答案</label>
+        <input
+          id="kg-reca"
+          class="kg-input"
+          type="text"
+          maxlength="60"
+          autocomplete="off"
+          aria-label="退出问题答案"
+          placeholder="2-60 字符, 不区分大小写"
+        />
+        <p id="kg-err4" class="kg-error" role="alert" hidden></p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="back-4">返回</button>
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-4">下一步, 保存 PIN</button>
+        </div>
+      </div>
+
+      <!-- Step 5 - Categories -->
+      <div class="kg-page" data-page="5" hidden>
+        <h1 class="kg-h1">选择拦截分类</h1>
+        <p class="kg-help">默认全部启用。如果某类不想拦截, 取消勾选即可 - 后续可在管理后台随时调整。</p>
+        <ul class="kg-cat-list" id="kg-cat-list">
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="games" checked />
+              <span class="kg-cat-name">游戏类</span>
+            </label>
+            <p class="kg-cat-desc">200 个网站 - 4399 / steam / epicgames / riotgames / 国内主流游戏官网等</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="adult" checked />
+              <span class="kg-cat-name">成人类</span>
+            </label>
+            <p class="kg-cat-desc">210 个网站 - 主流成人视频站点 + 中日韩限制级聚合站</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="social_short_video" checked />
+              <span class="kg-cat-name">社交短视频</span>
+            </label>
+            <p class="kg-cat-desc">100 个网站 - 微博 / 小红书 / Instagram / TikTok 等</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="douyin_like" checked />
+              <span class="kg-cat-name">抖音类</span>
+            </label>
+            <p class="kg-cat-desc">80 个网站 - 抖音 / 快手 / 西瓜视频 / 火山等</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="gambling" checked />
+              <span class="kg-cat-name">赌博博彩</span>
+            </label>
+            <p class="kg-cat-desc">220 个网站 - bet365 / 在线赌场 / 体育博彩站</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="gacha_recharge" checked />
+              <span class="kg-cat-name">抽卡 / 开箱 / 充值</span>
+            </label>
+            <p class="kg-cat-desc">100 个网站 - 涉赌开箱站 + 第三方代充</p>
+          </li>
+          <li class="kg-cat-row">
+            <label class="kg-cat-label">
+              <input type="checkbox" data-cat="vpn_proxy" checked />
+              <span class="kg-cat-name">VPN / 代理</span>
+            </label>
+            <p class="kg-cat-desc">150 个网站 - 主流 VPN 与机场代理(防绕过用)</p>
+          </li>
+        </ul>
+        <p id="kg-err5" class="kg-error" role="alert" hidden></p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="back-5">返回</button>
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-5">下一步</button>
+        </div>
+      </div>
+
+      <!-- Step 6 - Advanced (optional) -->
+      <div class="kg-page" data-page="6" hidden>
+        <h1 class="kg-h1">高级设置 <span class="kg-h1-sub">(可选)</span></h1>
+        <p class="kg-help">这两项都可以跳过, 后续在管理后台随时添加。</p>
+
+        <fieldset class="kg-fieldset">
+          <legend class="kg-legend">额外屏蔽特定网站</legend>
+          <p class="kg-help-sm">每行一个域名, 例如 <code>bilibili.com</code>。无需带 https:// 前缀。</p>
+          <textarea
+            id="kg-custom-deny"
+            class="kg-textarea"
+            rows="4"
+            placeholder="bilibili.com&#10;weibo.com"
+            aria-label="自定义屏蔽列表"
+          ></textarea>
+          <p id="kg-err6a" class="kg-error" role="alert" hidden></p>
+        </fieldset>
+
+        <fieldset class="kg-fieldset">
+          <legend class="kg-legend">作息时段锁</legend>
+          <label class="kg-checkbox">
+            <input type="checkbox" id="kg-sched-enable" />
+            <span>启用作息时段(在指定时段内任何网站都不能访问)</span>
+          </label>
+          <div class="kg-sched-row" id="kg-sched-row" hidden>
+            <label class="kg-label-sm">
+              从
+              <input type="time" id="kg-sched-from" value="22:00" />
+            </label>
+            <label class="kg-label-sm">
+              到
+              <input type="time" id="kg-sched-to" value="06:00" />
+            </label>
+            <p class="kg-help-sm">每天生效。跨午夜支持 (例如 22:00 - 06:00 表示晚上 10 点到次日早上 6 点)。</p>
+          </div>
+          <p id="kg-err6b" class="kg-error" role="alert" hidden></p>
+        </fieldset>
+
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="back-6">返回</button>
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="skip-6">跳过</button>
+          <button type="button" class="kg-btn kg-btn--primary" data-action="next-6">保存并完成</button>
+        </div>
+      </div>
+
+      <!-- Step 7 - Done -->
+      <div class="kg-page kg-page--done" data-page="done" hidden>
+        <div class="kg-done-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" focusable="false">
+            <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M20 33l8 8 16-18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 class="kg-h1">设置完成</h1>
+        <p class="kg-help" id="kg-done-summary">所有规则已生效。</p>
+        <p class="kg-help">现在 <strong>只有你(家长)</strong>能修改这些设置 - 孩子打开管理后台会被 PIN 锁住。</p>
+        <p class="kg-help">点击工具栏上的 KidGuard 图标可以随时查看 7 天拦截报表。</p>
+        <div class="kg-actions">
+          <button type="button" class="kg-btn kg-btn--primary" data-action="open-popup">打开扩展面板</button>
+          <button type="button" class="kg-btn kg-btn--ghost" data-action="open-options">进入管理后台</button>
+        </div>
+      </div>
+    </section>
+
+    <p class="kg-footnote" id="kg-footnote">未完成 PIN 设置无法跳过 - 关闭页面后下次仍会回到这里</p>
+  </main>
+  <script src="onboarding.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>已拦截 - KidGuard</title>
+  <link rel="stylesheet" href="blocked.css" />
+</head>
+<body>
+  <main class="kg-blocked" role="main">
+    <div class="kg-blocked-inner">
+      <div class="kg-shield" aria-hidden="true">
+        <svg viewBox="0 0 64 64" focusable="false">
+          <path d="M32 4 8 13v18c0 14 10 24 24 28 14-4 24-14 24-28V13L32 4Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M22 32l8 8 14-16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h1 id="kg-title" class="kg-title">已拦截</h1>
+      <p id="kg-subtitle" class="kg-subtitle">该网页已被 KidGuard 阻止访问</p>
+
+      <div class="kg-meta">
+        <span id="kg-category" class="kg-tag" hidden></span>
+        <span id="kg-host" class="kg-host"></span>
+      </div>
+
+      <section class="kg-quote-card" role="status" aria-live="polite" aria-label="励志语">
+        <svg class="kg-quote-mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 7c-2.5 0-4 2-4 4.5V17h6v-6H6c0-2 1-3 2-3V7Zm10 0c-2.5 0-4 2-4 4.5V17h6v-6h-3c0-2 1-3 2-3V7Z" fill="currentColor"/>
+        </svg>
+        <p id="kg-quote-text" class="kg-quote-text">学习是给未来的自己存钱</p>
+      </section>
+
+      <p class="kg-hint">想解锁? 请联系家长输入 PIN</p>
+    </div>
+  </main>
+  <script src="blocked.js"></script>
+</body>
+</html>

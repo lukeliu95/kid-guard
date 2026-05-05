@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KidGuard 管理后台</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <!-- PIN modal: shown until verified before any mutation -->
+  <div id="kg-pin-modal" class="kg-modal" role="dialog" aria-modal="true" aria-labelledby="kg-pin-title">
+    <div class="kg-modal-card">
+      <div class="kg-modal-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <rect x="5" y="10" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <h2 id="kg-pin-title" class="kg-modal-title">请输入 PIN 解锁编辑</h2>
+      <p class="kg-modal-help">未解锁前可浏览数据 - 编辑设置必须解锁</p>
+      <input
+        id="kg-pin-input"
+        class="kg-input kg-input--pin"
+        inputmode="numeric"
+        maxlength="6"
+        autocomplete="off"
+        aria-label="PIN"
+        placeholder="4-6 位数字"
+      />
+      <p id="kg-pin-error" class="kg-error" role="alert" hidden></p>
+      <div class="kg-modal-actions">
+        <button type="button" class="kg-btn kg-btn--ghost" id="kg-pin-skip">仅浏览(不解锁)</button>
+        <button type="button" class="kg-btn kg-btn--primary" id="kg-pin-submit">解锁</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="kg-shell">
+    <aside class="kg-sidebar" aria-label="导航">
+      <div class="kg-brand">
+        <svg class="kg-logo" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M10 1.5 3 4.5v5.4c0 4 3.05 7.6 7 8.6 3.95-1 7-4.6 7-8.6V4.5L10 1.5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M7 10.2 9.2 12.4 13.4 8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="kg-brand-name">KidGuard</span>
+      </div>
+
+      <nav class="kg-tab-nav" role="tablist" aria-orientation="vertical">
+        <button type="button" role="tab" aria-selected="true" class="kg-tab is-active" data-tab="blocklist">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 12.5 12.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>黑/白名单</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="kg-tab" data-tab="categories">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" fill="none" stroke="currentColor" stroke-width="1.5" rx="1"/><rect x="9" y="2" width="5" height="5" fill="none" stroke="currentColor" stroke-width="1.5" rx="1"/><rect x="2" y="9" width="5" height="5" fill="none" stroke="currentColor" stroke-width="1.5" rx="1"/><rect x="9" y="9" width="5" height="5" fill="none" stroke="currentColor" stroke-width="1.5" rx="1"/></svg>
+          <span>分类</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="kg-tab" data-tab="schedule">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>时段锁</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="kg-tab" data-tab="keywords">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>关键词</span>
+        </button>
+        <button type="button" role="tab" aria-selected="false" class="kg-tab" data-tab="pin">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>PIN/密保</span>
+        </button>
+      </nav>
+
+      <div class="kg-side-foot">
+        <span id="kg-lock-status" class="kg-lock-pill kg-lock-pill--locked" aria-live="polite">
+          <svg viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="5" width="8" height="6" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+          仅浏览模式
+        </span>
+      </div>
+    </aside>
+
+    <main class="kg-main" role="main">
+      <!-- Blocklist tab -->
+      <section class="kg-tabpanel" role="tabpanel" data-panel="blocklist">
+        <header class="kg-panel-head">
+          <h1 class="kg-panel-title">黑名单 / 白名单</h1>
+          <p class="kg-panel-sub">白名单优先级高于黑名单 - 输入 hostname 例如 example.com</p>
+        </header>
+
+        <div class="kg-grid-2">
+          <div class="kg-card">
+            <div class="kg-card-head">
+              <h2 class="kg-card-title">白名单 (allow)</h2>
+              <span class="kg-card-meta" id="kg-allow-count">0</span>
+            </div>
+            <form class="kg-add-row" data-form="allow">
+              <input type="text" class="kg-input" data-input="allow" placeholder="example.com" aria-label="添加白名单 hostname" />
+              <button type="submit" class="kg-btn kg-btn--primary kg-btn--sm" data-mut>添加</button>
+            </form>
+            <p class="kg-error" data-error="allow" role="alert" hidden></p>
+            <ul class="kg-host-list" data-list="allow" aria-live="polite"></ul>
+          </div>
+
+          <div class="kg-card">
+            <div class="kg-card-head">
+              <h2 class="kg-card-title">黑名单 (deny)</h2>
+              <span class="kg-card-meta" id="kg-deny-count">0</span>
+            </div>
+            <form class="kg-add-row" data-form="deny">
+              <input type="text" class="kg-input" data-input="deny" placeholder="example.com" aria-label="添加黑名单 hostname" />
+              <button type="submit" class="kg-btn kg-btn--primary kg-btn--sm" data-mut>添加</button>
+            </form>
+            <p class="kg-error" data-error="deny" role="alert" hidden></p>
+            <ul class="kg-host-list" data-list="deny" aria-live="polite"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories tab -->
+      <section class="kg-tabpanel" role="tabpanel" data-panel="categories" hidden>
+        <header class="kg-panel-head">
+          <h1 class="kg-panel-title">分类拦截</h1>
+          <p class="kg-panel-sub">控制 7 大类内置黑名单的开关</p>
+        </header>
+
+        <div class="kg-card">
+          <div class="kg-card-head">
+            <h2 class="kg-card-title">分类列表</h2>
+            <label class="kg-toggle">
+              <input type="checkbox" id="kg-cat-all" data-mut />
+              <span class="kg-toggle-track"><span class="kg-toggle-thumb"></span></span>
+              <span class="kg-toggle-label">全部启用</span>
+            </label>
+          </div>
+          <ul id="kg-cat-list" class="kg-cat-list"></ul>
+        </div>
+      </section>
+
+      <!-- Schedule tab -->
+      <section class="kg-tabpanel" role="tabpanel" data-panel="schedule" hidden>
+        <header class="kg-panel-head">
+          <h1 class="kg-panel-title">时段锁</h1>
+          <p class="kg-panel-sub">设置作息时间, 期间一切网页将被拦截 - 跨午夜支持(到时间早于起时间)</p>
+        </header>
+
+        <div class="kg-card">
+          <div class="kg-card-head">
+            <h2 class="kg-card-title">总开关 + 时段窗口</h2>
+            <label class="kg-toggle">
+              <input type="checkbox" id="kg-sched-enabled" data-mut />
+              <span class="kg-toggle-track"><span class="kg-toggle-thumb"></span></span>
+              <span class="kg-toggle-label">启用</span>
+            </label>
+          </div>
+          <ul id="kg-sched-list" class="kg-sched-list"></ul>
+          <div class="kg-card-foot">
+            <button type="button" class="kg-btn kg-btn--ghost" id="kg-sched-add" data-mut>+ 添加时段</button>
+            <button type="button" class="kg-btn kg-btn--primary" id="kg-sched-save" data-mut>保存</button>
+          </div>
+          <p class="kg-error" id="kg-sched-error" role="alert" hidden></p>
+        </div>
+      </section>
+
+      <!-- Keywords tab -->
+      <section class="kg-tabpanel" role="tabpanel" data-panel="keywords" hidden>
+        <header class="kg-panel-head">
+          <h1 class="kg-panel-title">搜索关键词拦截</h1>
+          <p class="kg-panel-sub">在 Google / Baidu / Bing 搜索时拦截命中关键词</p>
+        </header>
+
+        <div class="kg-card">
+          <div class="kg-card-head">
+            <h2 class="kg-card-title">总开关 + 自定义关键词</h2>
+            <label class="kg-toggle">
+              <input type="checkbox" id="kg-kw-enabled" data-mut />
+              <span class="kg-toggle-track"><span class="kg-toggle-thumb"></span></span>
+              <span class="kg-toggle-label">启用</span>
+            </label>
+          </div>
+          <form class="kg-add-row" id="kg-kw-form">
+            <input type="text" class="kg-input" id="kg-kw-input" placeholder="例如: 王者荣耀 下载" aria-label="添加关键词" />
+            <button type="submit" class="kg-btn kg-btn--primary kg-btn--sm" data-mut>添加</button>
+          </form>
+          <p class="kg-error" id="kg-kw-error" role="alert" hidden></p>
+          <ul id="kg-kw-list" class="kg-host-list" aria-live="polite"></ul>
+        </div>
+      </section>
+
+      <!-- PIN tab -->
+      <section class="kg-tabpanel" role="tabpanel" data-panel="pin" hidden>
+        <header class="kg-panel-head">
+          <h1 class="kg-panel-title">PIN / 退出问题</h1>
+          <p class="kg-panel-sub">修改 PIN 或退出问题前需先解锁</p>
+        </header>
+
+        <div class="kg-grid-2">
+          <div class="kg-card">
+            <div class="kg-card-head"><h2 class="kg-card-title">修改 PIN</h2></div>
+            <div class="kg-form-stack">
+              <label class="kg-field">
+                <span class="kg-field-label">原 PIN</span>
+                <input type="password" class="kg-input" id="kg-pin-old" inputmode="numeric" maxlength="6" autocomplete="off" />
+              </label>
+              <label class="kg-field">
+                <span class="kg-field-label">新 PIN</span>
+                <input type="password" class="kg-input" id="kg-pin-new1" inputmode="numeric" maxlength="6" autocomplete="off" />
+              </label>
+              <label class="kg-field">
+                <span class="kg-field-label">确认新 PIN</span>
+                <input type="password" class="kg-input" id="kg-pin-new2" inputmode="numeric" maxlength="6" autocomplete="off" />
+              </label>
+              <p class="kg-error" id="kg-pin-change-error" role="alert" hidden></p>
+              <button type="button" class="kg-btn kg-btn--primary" id="kg-pin-change-submit" data-mut>保存新 PIN</button>
+            </div>
+          </div>
+
+          <div class="kg-card">
+            <div class="kg-card-head"><h2 class="kg-card-title">修改退出问题</h2></div>
+            <div class="kg-form-stack">
+              <label class="kg-field">
+                <span class="kg-field-label">问题</span>
+                <input type="text" class="kg-input" id="kg-recq-new" maxlength="60" />
+              </label>
+              <label class="kg-field">
+                <span class="kg-field-label">答案</span>
+                <input type="text" class="kg-input" id="kg-reca-new" maxlength="60" />
+              </label>
+              <p class="kg-error" id="kg-recq-error" role="alert" hidden></p>
+              <button type="button" class="kg-btn kg-btn--primary" id="kg-recq-submit" data-mut>保存</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="kg-toast" class="kg-toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="tabs/blocklist.js"></script>
+  <script src="tabs/categories.js"></script>
+  <script src="tabs/schedule.js"></script>
+  <script src="tabs/keywords.js"></script>
+  <script src="tabs/pin.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

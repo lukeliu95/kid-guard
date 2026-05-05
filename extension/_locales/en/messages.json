@@ -1,0 +1,145 @@
+{
+  "extName": {
+    "message": "KidGuard"
+  },
+  "extDescription": {
+    "message": "Family-friendly browser blocker — help kids focus on learning"
+  },
+  "popupTitle": {
+    "message": "KidGuard"
+  },
+  "popupTab7Days": {
+    "message": "Last 7 days"
+  },
+  "popupTabBlocked": {
+    "message": "Blocked TOP 10"
+  },
+  "popupTabVisited": {
+    "message": "Visited TOP 10"
+  },
+  "popupOpenOptions": {
+    "message": "Open Settings"
+  },
+  "optionsTitle": {
+    "message": "KidGuard Settings"
+  },
+  "optionsTabCategories": {
+    "message": "Categories"
+  },
+  "optionsTabCustom": {
+    "message": "Custom Lists"
+  },
+  "optionsTabSchedule": {
+    "message": "Schedule Lock"
+  },
+  "optionsTabKeywords": {
+    "message": "Keywords"
+  },
+  "optionsTabPin": {
+    "message": "PIN & Recovery"
+  },
+  "blockedTitle": {
+    "message": "This page is blocked by KidGuard"
+  },
+  "blockedSubtitle": {
+    "message": "Now is a good time to focus on learning. Come back later."
+  },
+  "blockedReasonCategory": {
+    "message": "Matched category: $CAT$",
+    "placeholders": {
+      "cat": {
+        "content": "$1"
+      }
+    }
+  },
+  "blockedReasonManual": {
+    "message": "Matched parent's manual deny list"
+  },
+  "blockedReasonKeyword": {
+    "message": "Search keyword was blocked"
+  },
+  "scheduleLockSubtitle": {
+    "message": "You are in a focus window set by your parents. Try again later."
+  },
+  "keywordBlockSubtitle": {
+    "message": "The search term is not appropriate for now."
+  },
+  "onboardingTitle": {
+    "message": "Welcome to KidGuard"
+  },
+  "onboardingStep1": {
+    "message": "Step 1 · Set PIN"
+  },
+  "onboardingStep2": {
+    "message": "Step 2 · Set recovery question"
+  },
+  "onboardingStep3": {
+    "message": "Step 3 · Done"
+  },
+  "pinPrompt": {
+    "message": "Enter a 4–6 digit PIN"
+  },
+  "pinPromptConfirm": {
+    "message": "Confirm your PIN"
+  },
+  "pinErrorMismatch": {
+    "message": "PINs do not match"
+  },
+  "pinErrorWrong": {
+    "message": "Wrong PIN"
+  },
+  "pinErrorCooldown": {
+    "message": "Too many attempts. Try again later."
+  },
+  "pinForgot": {
+    "message": "Forgot PIN?"
+  },
+  "recoveryQuestionDefault1": {
+    "message": "What was the name of your first pet?"
+  },
+  "recoveryQuestionDefault2": {
+    "message": "What is your favorite teacher's last name?"
+  },
+  "recoveryQuestionDefault3": {
+    "message": "In which city were you born?"
+  },
+  "recoveryAnswerPrompt": {
+    "message": "Enter the recovery answer"
+  },
+  "buttonSave": {
+    "message": "Save"
+  },
+  "buttonCancel": {
+    "message": "Cancel"
+  },
+  "buttonAdd": {
+    "message": "Add"
+  },
+  "buttonDelete": {
+    "message": "Delete"
+  },
+  "buttonConfirm": {
+    "message": "Confirm"
+  },
+  "categoryGames": {
+    "message": "Games"
+  },
+  "categoryAdult": {
+    "message": "Adult"
+  },
+  "categorySocialShortVideo": {
+    "message": "Social / Short Video"
+  },
+  "categoryDouyinLike": {
+    "message": "Douyin-like"
+  },
+  "categoryGambling": {
+    "message": "Gambling"
+  },
+  "categoryGachaRecharge": {
+    "message": "Gacha / Recharge"
+  },
+  "categoryVpnProxy": {
+    "message": "VPN / Proxy"
+  }
+}

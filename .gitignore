@@ -1,0 +1,25 @@
+# Build artifacts
+extension/dist/
+extension/kid-guard.zip
+*.zip
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Local-only logs / scratch (just in case)
+*.log
+.cache/
+
+# Python (icons regen tooling)
+__pycache__/
+*.pyc
+
+# Vercel
+.vercel/
+
+# Node (if dev tooling added later)
+node_modules/
