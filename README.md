@@ -8,7 +8,7 @@
 
 KidGuard 帮父母把 12-15 岁孩子的浏览器流量挡在游戏 / 成人 / 短视频 / 抖音类 / 赌博 / 抽卡充值 / VPN 代理之外, **零数据外传**, **零 LLM**, **零 npm 依赖**。1060 个精选域名内置 + 7 类自动拦截 + 时段锁 + 关键词拦截 + 7 步 onboarding 引导 + PIN 守门。
 
-落地页:[https://kid-guard.vercel.app](https://kid-guard.vercel.app) (待部署后生效)
+落地页:[https://kid.simprr.com](https://kid.simprr.com)
 
 ## 功能一览
 
